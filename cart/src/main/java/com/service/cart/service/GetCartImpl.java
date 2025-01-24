@@ -6,7 +6,6 @@ import com.service.cart.exceptions.CartNotFoundException;
 import com.service.cart.hash.Cart;
 import com.service.cart.repositories.CartRepository;
 import com.service.cart.usecase.GetCartUseCase;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,7 +20,7 @@ public class GetCartImpl implements GetCartUseCase {
 
     @Override
     public CartDto getCart(String id){
-        Cart cartFinded = cartRepository.findById(id).orElseThrow(() -> new CartNotFoundException(id));
+        Cart cartFinded = cartRepository.findByUserId(id).orElseThrow(() -> new CartNotFoundException(id));
         return cartMapper.toDto(cartFinded);
     }
 }

@@ -6,6 +6,7 @@ import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.redis.core.index.Indexed;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -15,6 +16,7 @@ import java.util.List;
 @RedisHash
 public class Cart {
     @Id
+    @Indexed
     private String id;
 
     @Indexed
@@ -22,7 +24,12 @@ public class Cart {
 
     private List<Product> products;
 
+
     public void addProduct(Product product){
-        this.products.add(product);
+        if(products.stream().anyMatch(prod -> prod.getProductId().equals(product.getProductId()))){
+            List <Product> findedProd = products.stream().filter(prod -> prod.getProductId().equals(product.getProductId())).toList();
+            products.remove(findedProd.getFirst());
+        }
+        if(product.getQuantity() > 0)products.add(product);
     }
 }

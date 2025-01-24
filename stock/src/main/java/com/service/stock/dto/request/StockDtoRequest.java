@@ -1,4 +1,4 @@
-package com.service.cart.dto.request;
+package com.service.stock.dto.request;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -12,12 +12,12 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CartDtoRequest {
-    @NotNull(message = "Product cannot be null")
-    @Size(min = 1, message = "productId must be greater than 1")
-    private String productId;
+public class StockDtoRequest {
+    @NotNull(message = "IdProduct cannot be null")
+    @Size(min = 1, message = "IdProduct must be greater than 1")
+    private String IdProduct;
 
     @NotNull(message = "Quantity cannot be null")
-    @Min(value = 0, message = "Quantity must be greater or equal than 0")
+    @Min(value = 1, message = "Quantity must be greater or equal to 1")
     private Integer quantity;
 }

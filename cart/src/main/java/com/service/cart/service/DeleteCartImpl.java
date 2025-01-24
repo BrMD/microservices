@@ -5,13 +5,13 @@ import com.service.cart.exceptions.CartNotFoundException;
 import com.service.cart.hash.Cart;
 import com.service.cart.repositories.CartRepository;
 import com.service.cart.usecase.DeleteCartUseCase;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DeleteCartImpl implements DeleteCartUseCase {
-    private final CartMapper cartMapper;
     private final CartRepository cartRepository;
 
-    public DeleteCartImpl(CartMapper cartMapper, CartRepository cartRepository) {
-        this.cartMapper = cartMapper;
+    public DeleteCartImpl(CartRepository cartRepository) {
         this.cartRepository = cartRepository;
     }
 
