@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.UUID;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -15,11 +17,11 @@ import lombok.Setter;
 public class StockDto {
     @NotNull(message = "Id cannot be null")
     @Size(min = 1, message = "Id must be greater than 1")
-    private String id;
+    private UUID id;
 
     @NotNull(message = "IdProduct cannot be null")
     @Size(min = 1, message = "IdProduct must be greater than 1")
-    private String IdProduct;
+    private String idProduct;
 
     @NotNull(message = "Quantity cannot be null")
     @Min(value = 1, message = "Quantity must be greater or equal to 1")

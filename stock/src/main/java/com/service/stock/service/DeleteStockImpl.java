@@ -5,6 +5,8 @@ import com.service.stock.repositories.StockRepository;
 import com.service.stock.usecase.DeleteStockUseCase;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class DeleteStockImpl implements DeleteStockUseCase {
     private final StockRepository stockRepository;

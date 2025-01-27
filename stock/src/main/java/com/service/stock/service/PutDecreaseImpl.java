@@ -6,6 +6,8 @@ import com.service.stock.repositories.StockRepository;
 import com.service.stock.usecase.PutDecreaseUseCase;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class PutDecreaseImpl implements PutDecreaseUseCase {
     private final StockRepository stockRepository;

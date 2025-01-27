@@ -8,6 +8,8 @@ import com.service.stock.usecase.GetStockQuantityUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class GetStockQuantityImpl implements GetStockQuantityUseCase {
     private final StockRepository stockRepository;

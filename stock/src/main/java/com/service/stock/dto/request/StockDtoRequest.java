@@ -15,7 +15,7 @@ import lombok.Setter;
 public class StockDtoRequest {
     @NotNull(message = "IdProduct cannot be null")
     @Size(min = 1, message = "IdProduct must be greater than 1")
-    private String IdProduct;
+    private String idProduct;
 
     @NotNull(message = "Quantity cannot be null")
     @Min(value = 1, message = "Quantity must be greater or equal to 1")
