@@ -9,16 +9,16 @@ import org.springframework.stereotype.Component;
 public class ProductMapper {
     public ProductDto toDto(Product product){
         if(product == null) return null;
-        return new ProductDto(product.getProductId(), product.getName(), product.getDescription(), product.getPrice(), product.getStock(), product.getImageUrl());
+        return new ProductDto(product.getProductId(), product.getName(), product.getPrice(),product.getDescription(), product.getImageUrl());
     }
 
     public Product toEntity(RequestProductDto requestProductDto){
         if(requestProductDto == null) return null;
-        return new Product(requestProductDto.getName(), requestProductDto.getDescription(), requestProductDto.getPrice(), requestProductDto.getStock(), requestProductDto.getImageUrl());
+        return new Product(requestProductDto.getName(), requestProductDto.getDescription(), requestProductDto.getPrice(), requestProductDto.getImageUrl());
     }
 
     public Product toEntity(ProductDto productDto){
         if(productDto == null) return null;
-        return new Product(productDto.getProductId(), productDto.getName(), productDto.getDescription(), productDto.getPrice(), productDto.getStock(), productDto.getImageUrl());
+        return new Product(productDto.getProductId(), productDto.getName(), productDto.getDescription(), productDto.getPrice(), productDto.getImageUrl());
     }
 }

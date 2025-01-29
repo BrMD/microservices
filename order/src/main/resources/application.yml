@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: order
+  datasource:
+    oracleucp:
+      max-pool-size: '2'
+      min-pool-size: '1'
+      connection-pool-name: connectionPoolName1
+      connection-factory-class-name: oracle.jdbc.pool.OracleDataSource
+      initial-pool-size: '1'
+    driver:
+      class-name: oracle.jdbc.OracleDriver
+    password: '1234'
+    username: system
+    url: jdbc:oracle:thin:@192.168.1.103:1521/xe
+    type: oracle.ucp.jdbc.PoolDataSource
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.OracleDialect
+server:
+  port: '8083'

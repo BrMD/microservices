@@ -22,6 +22,7 @@ public class GetStockQuantityImpl implements GetStockQuantityUseCase {
 
     @Override
     public StockDto getQuantity(String id){
+        System.out.println(id);
         var stockFinded = stockRepository.findByIdProduct(id).orElseThrow(() -> new StockNotFoundException(id));
         return stockMapper.toDto(stockFinded);
     }

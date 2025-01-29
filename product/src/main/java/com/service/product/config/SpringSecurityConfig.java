@@ -17,7 +17,7 @@ public class SpringSecurityConfig {
                 .authorizeHttpRequests(requests -> {
                             requests
                                     .requestMatchers("/api/v1/products").permitAll();
-                            requests.anyRequest().authenticated();
+                            requests.anyRequest().permitAll();
                         }
 
                 );

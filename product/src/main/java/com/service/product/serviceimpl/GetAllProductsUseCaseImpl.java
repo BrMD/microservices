@@ -26,5 +26,6 @@ public class GetAllProductsUseCaseImpl implements GetAllProductsUseCase {
     @Override
     public List<ProductDto> getAll(){
         return productRepository.findAll().stream().map(productMapper::toDto).collect(Collectors.toList());
+
     }
 }

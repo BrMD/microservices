@@ -1,4 +1,5 @@
 package com.service.product.dto.request;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
@@ -25,7 +26,8 @@ public class RequestProductDto {
     private Float price;
 
     @NotNull(message = "Stock cannot be null")
-    private String stock;
+    @Min(value = 1, message = "Stock must be greater than 1")
+    private Integer stock;
 
     @NotNull(message = "ImageUrl Cannot be null")
     @Size(min = 1, max = 255, message = "imageUrl must be between 1 and 255 characters")

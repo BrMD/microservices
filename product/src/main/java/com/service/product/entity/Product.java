@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.core.mapping.MongoId;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Document(collation = "products")
+@Document(collection = "products")
 @EqualsAndHashCode
 public class Product {
     @Id
@@ -29,16 +29,13 @@ public class Product {
     @Positive
     private Float price;
 
-    private String stock;
-
     @NotBlank
     private String imageUrl;
 
-    public Product(String name, String description, Float price, String stock, String imageUrl) {
+    public Product(String name, String description, Float price, String imageUrl) {
         this.name = name;
         this.description = description;
         this.price = price;
-        this.stock = stock;
         this.imageUrl = imageUrl;
     }
 }

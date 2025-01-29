@@ -8,25 +8,24 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.UUID;
-
 @RestController
-@RequestMapping("/api/v1/stock")
 public class StockController {
     private final CreateStockImpl createProductImpl;
     private final DeleteStockImpl deleteStockImpl;
     private final GetStockQuantityImpl getStockQuantityImpl;
     private final PutDecreaseImpl putDecreaseImpl;
     private final PutIncreaseImpl putIncreaseImpl;
+    private final PutEditQuantityStockImpl putEditQuantityStockImpl;
 
     public StockController(CreateStockImpl createProductImpl, DeleteStockImpl deleteStockImpl,
                            GetStockQuantityImpl getStockQuantityImpl, PutDecreaseImpl putDecreaseImpl,
-                           PutIncreaseImpl putIncreaseImpl) {
+                           PutIncreaseImpl putIncreaseImpl, PutEditQuantityStockImpl putEditQuantityStockImpl) {
         this.createProductImpl = createProductImpl;
         this.deleteStockImpl = deleteStockImpl;
         this.getStockQuantityImpl = getStockQuantityImpl;
         this.putDecreaseImpl = putDecreaseImpl;
         this.putIncreaseImpl = putIncreaseImpl;
+        this.putEditQuantityStockImpl = putEditQuantityStockImpl;
     }
 
     @GetMapping("/{id}")
@@ -56,6 +55,13 @@ public class StockController {
     @PutMapping("/dec/{id}")
     public ResponseEntity<Void> decreaseStock(@PathVariable String id, @RequestParam Integer quantity){
         putDecreaseImpl.decQuantity(id, quantity);
+        return new ResponseEntity<>(HttpStatusCode.valueOf(204));
+    }
+
+    @PutMapping("/edit/{id}")
+    public ResponseEntity<Void> editStock(@PathVariable String id, @RequestParam Integer quantity){
+        System.out.println(id);
+        putEditQuantityStockImpl.editStock(id, quantity);
         return new ResponseEntity<>(HttpStatusCode.valueOf(204));
     }
 }

@@ -1,6 +1,7 @@
 package com.service.product.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
@@ -31,9 +32,18 @@ public class ProductDto {
     private Float price;
 
     @NotNull(message = "Stock cannot be null")
-    private String stock;
+    @Min(value = 1, message = "Stock must be greater or equal than 1")
+    private Integer stock;
 
     @NotNull(message = "ImageUrl Cannot be null")
     @Size(min = 1, max = 255, message = "imageUrl must be between 1 and 255 characters")
     private String imageUrl;
+
+    public ProductDto(String productId, String name, Float price, String description, String imageUrl) {
+        this.productId = productId;
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.imageUrl = imageUrl;
+    }
 }
