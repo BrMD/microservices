@@ -5,13 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class ProductDtoResponse {
-    private String productId;
+    private String id;
     private Integer quantity;
-    private String prodName;
-    private String imageUrl;
+    private String name;
+    private String image;
 }

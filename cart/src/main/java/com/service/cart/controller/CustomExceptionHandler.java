@@ -2,6 +2,7 @@ package com.service.cart.controller;
 
 import com.service.cart.exceptions.ApiErrorMessage;
 import com.service.cart.exceptions.CartNotFoundException;
+import com.service.cart.exceptions.ProductNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +32,12 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(CartNotFoundException.class)
     public ResponseEntity<Object> handleCartNotFound(CartNotFoundException exception, WebRequest request){
+        ApiErrorMessage apiErrorMessage = new ApiErrorMessage(HttpStatusCode.valueOf(404), exception.getMessage());
+        return new ResponseEntity<>(apiErrorMessage, new HttpHeaders(), apiErrorMessage.getStatus());
+    }
+
+    @ExceptionHandler(CartNotFoundException.class)
+    public ResponseEntity<Object> handleCartNotFound(ProductNotFoundException exception, WebRequest request){
         ApiErrorMessage apiErrorMessage = new ApiErrorMessage(HttpStatusCode.valueOf(404), exception.getMessage());
         return new ResponseEntity<>(apiErrorMessage, new HttpHeaders(), apiErrorMessage.getStatus());
     }
