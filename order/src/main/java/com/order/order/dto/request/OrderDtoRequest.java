@@ -20,5 +20,4 @@ public class OrderDtoRequest {
     @NotNull(message = "cartId cannot be null")
     @Size(message = "cartId must be greater than one")
     private String cartId;
-
 }

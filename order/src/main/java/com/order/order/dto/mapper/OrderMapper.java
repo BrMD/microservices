@@ -14,7 +14,7 @@ public class OrderMapper {
 
     public Order toEntity(OrderDto orderDto){
         if(orderDto == null) return null;
-        return new Order(orderDto.getId(), orderDto.getUserId(), orderDto.getCartId(), orderDto.getValue());
+        return new Order(orderDto.getId(), orderDto.getUserId(), orderDto.getCartId(),1, orderDto.getValue());
     }
 
     public Order toEntity(OrderDtoRequest orderDtoRequest){

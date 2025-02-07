@@ -19,16 +19,17 @@ public class ProductsController {
     private final DeleteProductImpl deleteProductImpl;
     private final FindProductByIdImpl findProductByIdImpl;
     private final UpdateByIdProductImpl updateByIdProductImpl;
+    private final GetPriceProductImpl getPriceProductImpl;
 
-    @Autowired
     public ProductsController(GetAllProductsUseCaseImpl getAllProductsUseCase, CreateProductImpl createProductImpl,
                               DeleteProductImpl deleteProductImpl, FindProductByIdImpl findProductByIdImpl,
-                              UpdateByIdProductImpl updateByIdProductImpl) {
+                              UpdateByIdProductImpl updateByIdProductImpl, GetPriceProductImpl getPriceProductImpl) {
         this.getAllProductsUseCase = getAllProductsUseCase;
         this.createProductImpl = createProductImpl;
         this.deleteProductImpl = deleteProductImpl;
         this.findProductByIdImpl = findProductByIdImpl;
         this.updateByIdProductImpl = updateByIdProductImpl;
+        this.getPriceProductImpl = getPriceProductImpl;
     }
 
     @GetMapping()
@@ -60,5 +61,11 @@ public class ProductsController {
     public ResponseEntity<Void> update(@PathVariable String id, @Valid @RequestBody RequestProductDto requestProductDto){
         updateByIdProductImpl.update(id, requestProductDto);
         return new ResponseEntity<>(HttpStatusCode.valueOf(204));
+    }
+
+    @GetMapping("/price/{id}")
+    public ResponseEntity<Float> update(@PathVariable String id){
+        Float price = getPriceProductImpl.getPrice(id);
+        return new ResponseEntity<>(price,HttpStatusCode.valueOf(200));
     }
 }

@@ -29,5 +29,5 @@ public class OrderDto {
 
     @NotNull(message = "Value cannot be null")
     @DecimalMin(value = "0.01", message = "Value must be greater than 0.01")
-    private Double value;
+    private Float value;
 }
